@@ -2,7 +2,7 @@ import React from 'react';
 import axios from 'axios';
 
 
-const RobotActions = ({
+const RobotControl = ({
     baseUrl,
     tableAPosition,
     tableBPosition,
@@ -93,4 +93,4 @@ const RobotActions = ({
     );
 };
 
-export default RobotActions;
+export default RobotControl;
