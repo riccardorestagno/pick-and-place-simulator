@@ -1,17 +1,7 @@
 #!/usr/bin/env python
 
-import uvicorn
-from fastapi import FastAPI
-from fastapi.middleware.cors import CORSMiddleware
-from pydantic import BaseModel
-from enum import Enum
+from models import GripperState
 import time
-from typing import List, Optional
-
-
-class GripperState(Enum):
-    OPEN = 0
-    CLOSED = 1
 
 
 class Robot:
@@ -154,74 +144,5 @@ class Robot:
         return self.move_to(self.home_position, speed)
 
 
-# FastAPI app initialization
-app = FastAPI()
-
-# Configure CORS
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=["http://localhost:3000"],
-    allow_credentials=True,
-    allow_methods=["*"],  # Allow all methods
-    allow_headers=["*"],  # Allow all headers
-)
-
-# Create a Robot instance globally for this example
-robot = Robot()
-
-
-class RobotRequest(BaseModel):
-    initial_position: List[float]
-    home_position: List[float]
-    gripper_state: GripperState
-
-
-class MoveHomeRequest(BaseModel):
-    speed: int = 50
-
-
-class MoveToRequest(BaseModel):
-    target_position: List[float]
-    speed: int = 90
-
-
-class MoveToResponse(BaseModel):
-    current_position: List[float]
-    axis_speed: List[float]
-    err_msg: Optional[str]
-
-
-# Endpoint to initialize the robot
-@app.post("/initialize_robot")
-async def initialize_robot(request: RobotRequest):
-    global robot
-    robot = Robot(
-        initial_position=request.initial_position,
-        home_position=request.home_position,
-        gripper_state=request.gripper_state
-    )
-    return {"message": "Robot initialized successfully", "robot": robot.__dict__}
-
-
-# Endpoint to move the robot to the home location
-@app.post("/move_home", response_model=MoveToResponse)
-async def move_home(request: MoveHomeRequest):
-    current_position, axis_speed, err_msg = robot.move_home(request.speed)
-    return MoveToResponse(
-        current_position=current_position,
-        axis_speed=axis_speed,
-        err_msg=err_msg
-    )
-
-
-@app.post("/move_to", response_model=MoveToResponse)
-async def move_to(request: MoveToRequest):
-    current_position, axis_speed, err_msg = robot.move_to(request.target_position, request.speed)
-    return MoveToResponse(
-        current_position=current_position,
-        axis_speed=axis_speed,
-        err_msg=err_msg
-    )
-
 if __name__ == '__main__':
-    uvicorn.run("robot_sim:app", reload=True)
+    pass
