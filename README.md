@@ -66,5 +66,6 @@
    The front-end will be accessible on http://localhost:3000 by default.
    
 
-## Functionality
+## Demo
 
+### [Pick and Place Simulator - YouTube](https://www.youtube.com/watch?v=Qj9wv73TStY)
