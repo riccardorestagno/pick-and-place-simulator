@@ -1,4 +1,4 @@
-# Project Setup
+# Pick and Place Simulator
 
 ## Table of Contents
 - [Back-End Setup (Python)](#back-end-setup-python)

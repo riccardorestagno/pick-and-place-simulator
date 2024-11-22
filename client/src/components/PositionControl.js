@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import axios from 'axios';
 
 
@@ -71,6 +71,16 @@ const PositionControl = ({
                         className={isInputReadonly ? "input-readonly" : "input-editable"}
                     />
                 </label>
+                <label>
+                    Z:
+                    <input
+                        type="number"
+                        value={robotPosition.z}
+                        onChange={(e) => handleRobotPositionChange('z', e.target.value)}
+                        readOnly={isInputReadonly}
+                        className={isInputReadonly ? "input-readonly" : "input-editable"}
+                    />
+                </label>
             </div>
             <div>
                 <label>
@@ -92,6 +102,18 @@ const PositionControl = ({
                         value={tableAPosition.y}
                         onChange={(e) =>
                             setTableAPosition({ ...tableAPosition, y: parseInt(e.target.value) })
+                        }
+                        readOnly={isInputReadonly}
+                        className={isInputReadonly ? "input-readonly" : "input-editable"}
+                    />
+                </label>
+                <label>
+                    Z:
+                    <input
+                        type="number"
+                        value={tableAPosition.z}
+                        onChange={(e) =>
+                            setTableAPosition({ ...tableAPosition, z: parseInt(e.target.value) })
                         }
                         readOnly={isInputReadonly}
                         className={isInputReadonly ? "input-readonly" : "input-editable"}
@@ -123,6 +145,18 @@ const PositionControl = ({
                         className={isInputReadonly ? "input-readonly" : "input-editable"}
                     />
                 </label>
+                <label>
+                    Z:
+                    <input
+                        type="number"
+                        value={tableBPosition.z}
+                        onChange={(e) =>
+                            setTableBPosition({ ...tableBPosition, z: parseInt(e.target.value) })
+                        }
+                        readOnly={isInputReadonly}
+                        className={isInputReadonly ? "input-readonly" : "input-editable"}
+                    />
+                </label>
             </div>
             <div>
                 <label>
@@ -144,6 +178,18 @@ const PositionControl = ({
                         value={homePosition.y}
                         onChange={(e) =>
                             setHomePosition({ ...homePosition, y: parseInt(e.target.value) })
+                        }
+                        readOnly={isInputReadonly}
+                        className={isInputReadonly ? "input-readonly" : "input-editable"}
+                    />
+                </label>
+                <label>
+                    Z:
+                    <input
+                        type="number"
+                        value={homePosition.z}
+                        onChange={(e) =>
+                            setHomePosition({ ...homePosition, z: parseInt(e.target.value) })
                         }
                         readOnly={isInputReadonly}
                         className={isInputReadonly ? "input-readonly" : "input-editable"}

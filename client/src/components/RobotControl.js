@@ -61,13 +61,16 @@ const RobotControl = ({
     // Handle Pick and Place Operation
     const handlePickAndPlace = () => {
 
+        // Always assume it's not at drop-off if using pick and place.
+        setIsAtDropOff(false);
+
         // Head to table A
-        moveToPosition({ x: tableAPosition.x + 25, y: tableAPosition.y + 25, z: 0 }, () => {
+        moveToPosition({ x: tableAPosition.x + 25, y: tableAPosition.y + 25, z: tableAPosition.z }, () => {
             // Once at table A, "Pick" the object by setting isCarryingObject to true
             setIsCarryingObject(true);
 
             // Head to table B
-            moveToPosition({ x: tableBPosition.x + 25, y: tableBPosition.y + 25, z: 0 }, () => {
+            moveToPosition({ x: tableBPosition.x + 25, y: tableBPosition.y + 25, z: tableBPosition.z }, () => {
                 // Once at table B, "Place" the object by setting isCarryingObject to false
                 setIsCarryingObject(false);
 

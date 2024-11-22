@@ -104,7 +104,7 @@ class Robot:
         if self._is_motion_completed(target_position):
             self.axis_speed = [0, 0, 0]
             self.current_position = target_position
-        print(self.current_position)
+
         return self.current_position, self.axis_speed, None
 
     def closed_gripper(self) -> GripperState:
