@@ -31,3 +31,4 @@ yarn-error.log*
 # back-end
 /server/__pycache__
 /server/.idea
+/server/env
