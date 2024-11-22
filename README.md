@@ -3,7 +3,7 @@
 ## Table of Contents
 - [Back-End Setup (Python)](#back-end-setup-python)
 - [Front-End Setup (React)](#front-end-setup-react)
-- [Functionality](#functionality)
+- [Demo](#demo)
 
 ---
 
